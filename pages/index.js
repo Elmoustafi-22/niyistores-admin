@@ -2,6 +2,7 @@ import React from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faGoogle} from "@fortawesome/free-brands-svg-icons";
 import { signIn, signOut, useSession } from "next-auth/react";
+import Link from "next/link";
 
 
 
@@ -27,9 +28,9 @@ export default function Home() {
               </div>
 
               <div className="flex items-center gap-4">
-                <button
+                <Link
                   className="inline-flex items-center justify-center hover:border hover:border-teal-600 gap-1.5 rounded border border-gray-200 bg-white px-5 py-3 text-gray-900 transition ease-in duration-300 hover:text-teal-700 hover:shadow-md focus:outline-none focus:ring"
-                  type="button"
+                  href={"/products"}
                 >
                   <span className="text-sm font-medium"> View Products </span>
 
@@ -47,11 +48,11 @@ export default function Home() {
                       d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
                     />
                   </svg>
-                </button>
+                </Link>
 
-                <button
+                <Link
                   className="inline-flex items-center justify-center hover:border hover:border-orange-500 gap-1.5 rounded border border-gray-200 bg-white px-5 py-3 text-orange-600 transition ease-in duration-300 hover:text-orange-500 hover:shadow-md focus:outline-none focus:ring"
-                  type="button"
+                  href={"#"}
                 >
                   <span className="text-sm font-medium">View shop</span>
                   <svg
@@ -68,7 +69,7 @@ export default function Home() {
                       d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"
                     />
                   </svg>
-                </button>
+                </Link>
               </div>
             </div>
           </div>
