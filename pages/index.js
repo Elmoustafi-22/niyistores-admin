@@ -22,11 +22,12 @@ export default function Home() {
         </h1>
         <p className="font-medium my-4">An account is needed to view</p>
         <button
-          className="inline-block rounded border border-teal-600 bg-teal-600 px-12 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-teal-600 focus:outline-none focus:ring active:text-teal-500"
+          className="inline-block rounded border border-teal-600 bg-teal-600 px-12 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-teal-600 focus:outline-none focus:ring active:text-teal-500 transition ease-in duration-300"
           onClick={() => signIn()}
         >
           Sign in with
-          <FontAwesomeIcon icon={faGoogle} className="ml-2" />oogle
+          <FontAwesomeIcon icon={faGoogle} className="ml-2" />
+          oogle
         </button>
       </div>
     </>
