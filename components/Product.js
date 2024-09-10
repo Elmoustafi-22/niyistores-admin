@@ -1,10 +1,33 @@
+import axios from "axios";
 import Link from "next/link";
-import React from "react";
+import React, {useState, useEffect} from "react";
+import { useRouter } from "next/router";
 
 function Product() {
+    const [redirect, setRedirect] = useState(false);
+    const router = useRouter();
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
+    const [price, setPrice] = useState("");
+    const [images, setImages] = useState([]);
+
+    async function createProduct(e){
+      e.preventDefault();
+      
+      const data = {title, description, price};
+      await axios.post("/api/products", data)
+
+      setRedirect(true)
+    }
+
+    if (redirect) {
+      router.push("/products");
+      return null;
+    }
+      
     return (
       <>
-        <div className="mx-auto max-w-2xl">
+        <form onSubmit={createProduct} className="mx-auto max-w-2xl">
           <div className="mx-auto my-4">
             <div>
               <label
@@ -17,6 +40,8 @@ function Product() {
               <input
                 type="text"
                 id="title"
+                value={title}
+                onChange={e => setTitle(e.target.value)}
                 placeholder="Title of the product"
                 className="block w-full rounded-md border-gray-300 shadow-sm sm:text-sm focus:border-primary-400
                 focus:ring focus:ring-primary-200 focus:ring-opacity-50 disabled:cursor-not-allowed
@@ -105,6 +130,8 @@ function Product() {
                 id="description"
                 placeholder="Description of the product"
                 rows={5}
+                value={description}
+                onChange={e => setDescription(e.target.value)}
                 required
                 className="block w-full rounded-md border-gray-300 shadow-sm sm:text-sm focus:border-primary-400
                 focus:ring focus:ring-primary-200 focus:ring-opacity-50 disabled:cursor-not-allowed
@@ -126,6 +153,8 @@ function Product() {
                 type="number"
                 id="price"
                 placeholder="Price"
+                value={price}
+                onChange={e => setPrice(e.target.value)}
                 className="block w-full rounded-md border-gray-300 shadow-sm sm:text-sm focus:border-primary-400
                 focus:ring focus:ring-primary-200 focus:ring-opacity-50 disabled:cursor-not-allowed
               disabled:bg-gray-50 disabled:text-gray-500 border p-3"
@@ -141,7 +170,7 @@ function Product() {
               Save Product
             </button>
           </div>
-        </div>
+        </form>
       </>
     );
 }
