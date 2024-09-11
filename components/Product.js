@@ -4,14 +4,21 @@ import React, {useState, useEffect} from "react";
 import { useRouter } from "next/router";
 import Spinner from "./Spinner";
 import { ReactSortable } from "react-sortablejs";
+import toast from "react-hot-toast";
 
-function Product() {
+function Product({
+  _id,
+  title: existingTitle,
+  description: existingDescription,
+  price: existingPrice,
+  images: existingImages,
+}) {
     const [redirect, setRedirect] = useState(false);
     const router = useRouter();
-    const [title, setTitle] = useState("");
-    const [description, setDescription] = useState("");
-    const [price, setPrice] = useState("");
-    const [images, setImages] = useState([]);
+    const [title, setTitle] = useState(existingTitle || "");
+    const [description, setDescription] = useState(existingDescription || "");
+    const [price, setPrice] = useState(existingPrice || "");
+    const [images, setImages] = useState(existingImages || []);
     const [isUploading, setIsUploading] = useState(false)
 
     const uploadImagesQueue = []
@@ -23,8 +30,14 @@ function Product() {
         await Promise.all(uploadImagesQueue)
       }
       
-      const data = {title, description, price};
-      await axios.post("/api/products", data)
+      const data = {title, description, price, images};
+      if(_id) {
+        await axios.put("/api/products", {...data, _id})
+        toast.success("Product updated!")
+      } else {
+        await axios.post("/api/products", data);
+        toast.success("Product Created")
+      }
 
       setRedirect(true)
     }
