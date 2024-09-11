@@ -24,7 +24,7 @@ function Header() {
               <div className="lg:px-8 sm:px-4">
                 <div className="flex h-16 items-center justify-between">
                   <div className="flex-1 md:flex md:items-center md:gap-12">
-                    <Link className="block text-teal-600" href="#">
+                    <Link className="block text-teal-600" href="/">
                       <span className="sr-only">Home</span>
                       <svg
                         className="h-8 w-8 text-teal-600"
@@ -50,7 +50,7 @@ function Header() {
                             className={
                               location.pathname === "/" ? active : inActive
                             }
-                            href="#"
+                            href="/"
                           >
                             Dashboard
                           </Link>
@@ -100,7 +100,7 @@ function Header() {
                             className={
                               location.pathname === "/settings" ? active : inActive
                             }
-                            href="#"
+                            href="/settings"
                           >
                             Settings
                           </Link>
