@@ -31,13 +31,14 @@ function Product({
       }
       
       const data = {title, description, price, images};
-      if(_id) {
-        await axios.put("/api/products", {...data, _id})
-        toast.success("Product updated!")
+      if (_id) {
+        await axios.put("/api/products", { ...data, _id });
+        toast.success("Product updated!");
       } else {
         await axios.post("/api/products", data);
-        toast.success("Product Created")
+        toast.success("Product created!");
       }
+
 
       setRedirect(true)
     }
