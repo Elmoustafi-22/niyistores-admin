@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React, { useState } from "react";
-import { useSession } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 import { useRouter } from "next/router";
 
 function Header() {
@@ -76,7 +76,7 @@ function Header() {
                                 ? active
                                 : inActive
                             }
-                            href="#"
+                            href="/categories"
                           >
                             Categories
                           </Link>
@@ -89,7 +89,7 @@ function Header() {
                                 ? active
                                 : inActive
                             }
-                            href="#"
+                            href="/orders"
                           >
                             Orders
                           </Link>
@@ -98,7 +98,9 @@ function Header() {
                         <li>
                           <Link
                             className={
-                              location.pathname === "/settings" ? active : inActive
+                              location.pathname === "/settings"
+                                ? active
+                                : inActive
                             }
                             href="/settings"
                           >
@@ -122,23 +124,101 @@ function Header() {
                       </div>
 
                       <div className="block md:hidden">
-                        <button className="rounded bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="size-5"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M4 6h16M4 12h16M4 18h16"
-                            />
-                          </svg>
+                        <button
+                          className="rounded bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75"
+                          onClick={toggleMobileNav}
+                        >
+                          {isMobileNavOpen ? (
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              className="h-5 w-5"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M6 18L18 6M6 6l12 12"
+                              />
+                            </svg>
+                          ) : (
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              className="size-5"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M4 6h16M4 12h16M4 18h16"
+                              />
+                            </svg>
+                          )}
                         </button>
                       </div>
+                      {isMobileNavOpen && (
+                        <div className="md:hidden absolute top-16 right-0 bg-white border border-zinc-200 rounded shadow-lg p-6 text-lg">
+                          <ul className="flex flex-col items-start gap-4">
+                            <li>
+                              <Link
+                                onClick={toggleMobileNav}
+                                className={location.pathname === "/" ? active : inActive}
+                                href="/"
+                              >
+                                Dashboard
+                              </Link>
+                            </li>
+                            <li>
+                              <Link
+                                onClick={toggleMobileNav}
+                                className={location.pathname === "/products" ? active : inActive}
+                                href="/products"
+                              >
+                                Products
+                              </Link>
+                            </li>
+                            <li>
+                              <Link
+                                onClick={toggleMobileNav}
+                                className={location.pathname === "/categories" ? active : inActive}
+                                href="/categories"
+                              >
+                                Categories
+                              </Link>
+                            </li>
+                            <li>
+                              <Link
+                                onClick={toggleMobileNav}
+                                className={pathname === "/orders" ? active : inActive}
+                                href="/orders"
+                              >
+                                Orders
+                              </Link>
+                            </li>
+                            <li>
+                              <Link
+                                onClick={toggleMobileNav}
+                                className={pathname === "/settings" ? active : inActive}
+                                href="/categories"
+                              >
+                                Settings
+                              </Link>
+                            </li>
+                            <li className={pathname === "/" ? active : inActive}>
+                              {session && (
+                                <button onClick={() => signOut()}>
+                                  logout
+                                </button>
+                              )}
+                            </li>
+                          </ul>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
