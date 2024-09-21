@@ -3,7 +3,7 @@
 ### _A simple e-commerce project built with React, Next.js, Tailwind CSS, MongoDB, Node.js, and Stripe._
 
 ---
-![Home](screenshots/Home.JPG)
+![Home](screenshots/Home-admin.JPG)
 ---
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
