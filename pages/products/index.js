@@ -6,21 +6,36 @@ const formatPrice = (price) => {
   return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };
 
+const pageSize = 10;
+
 function Products() {
-    const [products, setProducts] = useState([])
-    const [loading, setLoading] = useState(true)
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
       axios.get("/api/products").then(res => {
         setProducts(res.data)
         setLoading(false)
       })
-    }, [])
+    }, []);
+
+    const totalPages = Math.ceil(products.length / pageSize);
+
+    const startIndex = (currentPage - 1) * pageSize;
+    const endIndex = Math.min(currentPage * pageSize, products.length);
+
+    const productsToDisplay = products.slice(startIndex, endIndex);
+
+    const changePage = (page) => {
+      setCurrentPage(page);
+      setLoading(false)
+    }
 
     return (
       <>
         <header className="bg-white">
-          <div className="mx-auto max-w-screen-2xl px-4 py-6 sm:px-6 sm:py-12 lg:px-8">
+          <div className="mx-auto max-md:flex-col px-4 py-6 sm:px-6 sm:py-12 lg:px-8">
             <div className="sm:flex sm:items-center sm:justify-between">
               <div className="text-center sm:text-left">
                 <h1 className="text-2xl font-bold text-gray-900 sm:text-3xl">
@@ -32,7 +47,7 @@ function Products() {
                 </p>
               </div>
 
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-4 sm:mt-0 sm:flex-row sm:items-center max-w-md">
                 <Link
                   className="inline-flex items-center justify-center hover:border hover:border-teal-600 gap-1.5 rounded border border-gray-200 bg-white px-5 py-3 text-gray-900 transition ease-in duration-300 hover:text-teal-700 hover:shadow-md focus:outline-none focus:ring"
                   href={"/products/new"}
@@ -68,7 +83,7 @@ function Products() {
             <p>No products</p>
           ) : (
             <div>
-              <table className="w-full border-collapse bg-white text-left text-sm text-gray-500">
+              <table className="min-w-full divide-y-2 divide-gray-200 border-collapse bg-white text-left text-sm text-gray-500">
                 <thead className="bg-gray-50">
                   <tr>
                     <th
@@ -100,7 +115,7 @@ function Products() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-100 border-t border-gray-100">
-                  {products.map((product, index) => (
+                  {productsToDisplay.map((product, index) => (
                     <tr key={product._id}>
                       <th className="px-6 py-4 font-medium text-gray-900">
                         {index + 1}
@@ -130,6 +145,23 @@ function Products() {
                   ))}
                 </tbody>
               </table>
+              {totalPages > 1 && (
+                <div className="flex justify-center mt-4">
+                  {Array.from({ length: totalPages }, (_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => changePage(i + 1)}
+                      className={`mx-2 px-3 py-2 rounded ${
+                        i + 1 === currentPage
+                          ? "bg-blue-300 text-slate-900"
+                          : "bg-gray-200 hover:bg-gray-300"
+                      }`}
+                    >
+                      {i + 1}
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
           )}
         </div>

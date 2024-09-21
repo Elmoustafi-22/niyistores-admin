@@ -1,4 +1,4 @@
-import { models, Schema, model } from "mongoose";
+import mongoose, { models, Schema, model } from "mongoose";
 
 const ProductSchema = new Schema({
     title: {
@@ -16,6 +16,25 @@ const ProductSchema = new Schema({
     images: [{
         type: String
     }],
+    colors: {
+        type: String,
+    },
+    details: {
+        type: String,
+    },
+    brand: {
+        type: String,
+    },
+    sizes: {
+        type: String,
+    },
+    category: {
+        type: mongoose.Types.ObjectId,
+        ref: "Category"
+    },
+    gender: {
+        type: String,
+    }
 })
 
 export const Product = models.Product || model("Product", ProductSchema);

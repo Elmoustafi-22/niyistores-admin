@@ -12,6 +12,12 @@ function Product({
   description: existingDescription,
   price: existingPrice,
   images: existingImages,
+  category: selectedCategory,
+  details: existingDetails,
+  brand: existingBrand,
+  colors: existingColors,
+  gender: existingGender,
+  sizes: existingSizes,
 }) {
     const [redirect, setRedirect] = useState(false);
     const router = useRouter();
@@ -19,9 +25,22 @@ function Product({
     const [description, setDescription] = useState(existingDescription || "");
     const [price, setPrice] = useState(existingPrice || "");
     const [images, setImages] = useState(existingImages || []);
-    const [isUploading, setIsUploading] = useState(false)
+    const [isUploading, setIsUploading] = useState(false);
+    const [details, setDetails] = useState(existingDetails || "");
+    const [brand, setBrand] = useState(existingBrand || "");
+    const [colors, setColors] = useState(existingColors || "");
+    const [gender, setGender] = useState(existingGender || "");
+    const [sizes, setSizes] = useState(existingSizes || "");
+    const [category, setCategory] = useState(selectedCategory || "")
+    const [categories, setCategories] = useState([]);
 
     const uploadImagesQueue = []
+
+    useEffect(() => {
+      axios.get("/api/categories").then(result => {
+        setCategories(result.data)
+      })
+    })
 
     async function createProduct(e){
       e.preventDefault();
@@ -30,7 +49,7 @@ function Product({
         await Promise.all(uploadImagesQueue)
       }
       
-      const data = {title, description, price, images};
+      const data = {title, description, price, images, details, category, brand, gender, sizes, colors};
       if (_id) {
         await axios.put("/api/products", { ...data, _id });
         toast.success("Product updated!");
@@ -122,8 +141,12 @@ function Product({
               disabled:bg-gray-50 disabled:text-gray-500 border p-3"
               >
                 <option value="">No category selected</option>
-                <option value="">Option02</option>
-                <option value="">Option03</option>
+                {categories.length > 0 &&
+                  categories.map((cat) => (
+                    <option key={cat._id} value={cat._id}>
+                      {cat.name}
+                    </option>
+                  ))}
               </select>
             </div>
           </div>
@@ -245,6 +268,79 @@ function Product({
                 focus:ring focus:ring-primary-200 focus:ring-opacity-50 disabled:cursor-not-allowed
               disabled:bg-gray-50 disabled:text-gray-500 border p-3"
               ></textarea>
+            </div>
+          </div>
+
+          <div className="mx-auto my-4">
+            <div>
+              <label
+                htmlFor="details"
+                className="block text-lg font-medium text-gray-700 py-2"
+              >
+                Product Details
+              </label>
+
+              <textarea
+                type="text"
+                id="details"
+                placeholder="Product details"
+                rows={5}
+                value={details}
+                onChange={(e) => setDetails(e.target.value)}
+                required
+                className="block w-full rounded-md border-gray-300 shadow-sm sm:text-sm focus:border-primary-400
+                focus:ring focus:ring-primary-200 focus:ring-opacity-50 disabled:cursor-not-allowed
+              disabled:bg-gray-50 disabled:text-gray-500 border p-3"
+              ></textarea>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div>
+              <label htmlFor="brand">Brand</label>
+              <input
+                className="w-full rounded-lg border border-gray-200 p-3 text-sm"
+                placeholder="brand name"
+                id="brand"
+                type="text"
+                value={brand}
+                onChange={(e) => setBrand(e.target.value)}
+              />
+            </div>
+
+            <div>
+              <label htmlFor="gender">Gender</label>
+              <input
+                className="w-full rounded-lg border border-gray-200 p-3 text-sm"
+                placeholder="brand name"
+                id="gender"
+                type="text"
+                value={gender}
+                onChange={(e) => setGender(e.target.value)}
+              />
+            </div>
+
+            <div>
+              <label htmlFor="sizes">Sizes</label>
+              <input
+                className="w-full rounded-lg border border-gray-200 p-3 text-sm"
+                placeholder="brand name"
+                id="sizes"
+                type="text"
+                value={sizes}
+                onChange={(e) => setSizes(e.target.value)}
+              />
+            </div>
+            <div>
+              <label htmlFor="colors">Color Options</label>
+              <input
+                className="w-full rounded-lg border border-gray-200 p-3 text-sm"
+                placeholder="colors"
+                id="colors"
+                type="text"
+                value={colors}
+                onChange={(e) => setColors(e.target.value)}
+              />
             </div>
           </div>
 
