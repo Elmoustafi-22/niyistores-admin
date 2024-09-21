@@ -114,9 +114,9 @@ function Header() {
                     <div className="flex items-center gap-4">
                       <div className="sm:flex sm:gap-4">
                         <div className="h-10 w-10">
-                          <div class="h-10 w-10">
+                          <div className="h-10 w-10">
                             <img
-                              class="h-full w-full rounded-full object-cover object-center border-2 border-teal-600"
+                              className="h-full w-full rounded-full object-cover object-center border-2 border-teal-600"
                               src={session.user.image}
                               alt=""
                             />

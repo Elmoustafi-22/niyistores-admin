@@ -27,7 +27,7 @@ function EditProduct() {
           </p>
         </div>
       </div>
-      <hr class="h-px border-0 bg-gray-300" />
+      <hr className="h-px border-0 bg-gray-300" />
 
       <div className="my-10">{productInfo && <Product {...productInfo} />}</div>
     </>

@@ -60,7 +60,7 @@ function Products() {
                     viewBox="0 0 24 24"
                     stroke-width="1.5"
                     stroke="currentColor"
-                    class="size-6"
+                    className="size-6"
                   >
                     <path
                       stroke-linecap="round"
@@ -74,7 +74,7 @@ function Products() {
           </div>
         </header>
 
-        <hr class="my-0 h-px border-0 bg-gray-300" />
+        <hr className="my-0 h-px border-0 bg-gray-300" />
 
         <div className="mx-auto max-w-screen-xl px-4 py-6 sm:px-6 sm:py-12 lg:px-8">
           {loading ? (

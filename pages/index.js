@@ -10,7 +10,6 @@ import { useRouter } from "next/router";
 
 function Home() {
   const { data: session } = useSession();
-  const [isLoading, setIsLoading] = useState(false);
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const router = useRouter
@@ -25,6 +24,12 @@ function Home() {
     await signOut();
     router.replace("/")
   }
+
+  useEffect(() => {
+    axios.get("/api/categories").then((result) => {
+      setCategories(result.data);
+    });
+  }, []);
 
   const totalImagesCount = products.reduce((total, product) => total + product.images.length, 0);
 
@@ -88,7 +93,7 @@ function Home() {
 
                   <Link
                     className="inline-flex items-center justify-center hover:border hover:border-orange-500 gap-1.5 rounded border border-gray-200 bg-white px-5 py-3 text-orange-600 transition ease-in duration-300 hover:text-orange-500 hover:shadow-md focus:outline-none focus:ring"
-                    href="/"
+                    href="#"
                     target="_blank"
                   >
                     <span className="text-sm font-medium">View shop</span>
@@ -98,7 +103,7 @@ function Home() {
                       viewBox="0 0 24 24"
                       stroke-width="1.5"
                       stroke="currentColor"
-                      class="size-6"
+                      className="size-6"
                     >
                       <path
                         stroke-linecap="round"
@@ -120,7 +125,7 @@ function Home() {
                       viewBox="0 0 24 24"
                       stroke-width="1.5"
                       stroke="currentColor"
-                      class="w-4 h-4"
+                      className="w-4 h-4"
                     >
                       <path
                         stroke-linecap="round"
@@ -180,7 +185,7 @@ function Home() {
                     viewBox="0 0 24 24"
                     stroke-width="1.5"
                     stroke="currentColor"
-                    class="w-4 h-4"
+                    className="w-4 h-4"
                   >
                     <path
                       stroke-linecap="round"
@@ -212,7 +217,7 @@ function Home() {
                     viewBox="0 0 24 24"
                     stroke-width="1.5"
                     stroke="currentColor"
-                    class="w-4 h-4"
+                    className="w-4 h-4"
                   >
                     <path
                       stroke-linecap="round"
@@ -244,7 +249,7 @@ function Home() {
                     viewBox="0 0 24 24"
                     stroke-width="1.5"
                     stroke="currentColor"
-                    class="w-4 h-4"
+                    className="w-4 h-4"
                   >
                     <path
                       stroke-linecap="round"

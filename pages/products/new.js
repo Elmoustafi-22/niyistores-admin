@@ -10,7 +10,7 @@ function NewProduct() {
             </p>
           </div>
         </div>
-        <hr class="my-0 h-px border-0 bg-gray-300" />
+        <hr className="my-0 h-px border-0 bg-gray-300" />
 
         <div className="my-10">
             <Product />

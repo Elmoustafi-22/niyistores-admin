@@ -31,18 +31,18 @@ function DeleteProduct() {
   }
   return (
     <>
-      <div class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-2">
-        <div class="mx-auto w-full overflow-hidden rounded-lg bg-gray-100 shadow-xl sm:max-w-sm">
-          <div class="relative p-5">
-            <div class="text-center">
-              <div class="mx-auto mb-5 flex h-10 w-10 items-center justify-center rounded-full bg-red-100 text-red-500">
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-2">
+        <div className="mx-auto w-full overflow-hidden rounded-lg bg-gray-100 shadow-xl sm:max-w-sm">
+          <div className="relative p-5">
+            <div className="text-center">
+              <div className="mx-auto mb-5 flex h-10 w-10 items-center justify-center rounded-full bg-red-100 text-red-500">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke-width="1.5"
                   stroke="currentColor"
-                  class="h-6 w-6"
+                  className="h-6 w-6"
                 >
                   <path
                     stroke-linecap="round"
@@ -52,26 +52,26 @@ function DeleteProduct() {
                 </svg>
               </div>
               <div>
-                <h3 class="text-lg font-medium text-secondary-900">
+                <h3 className="text-lg font-medium text-secondary-900">
                   Delete {productInfo?.title}
                 </h3>
-                <div class="mt-2 text-sm text-secondary-500">
+                <div className="mt-2 text-sm text-secondary-500">
                   Are you sure you want to delete this product? This action
                   cannot be undone.
                 </div>
               </div>
             </div>
-            <div class="mt-5 flex justify-end gap-3">
+            <div className="mt-5 flex justify-end gap-3">
               <button
                 type="button"
-                class="flex-1 rounded-lg border border-gray-300 bg-white px-4 py-2 text-center text-sm font-medium text-gray-700 shadow-sm transition-all hover:bg-gray-100 focus:ring focus:ring-gray-100 disabled:cursor-not-allowed disabled:border-gray-100 disabled:bg-gray-50 disabled:text-gray-400"
+                className="flex-1 rounded-lg border border-gray-300 bg-white px-4 py-2 text-center text-sm font-medium text-gray-700 shadow-sm transition-all hover:bg-gray-100 focus:ring focus:ring-gray-100 disabled:cursor-not-allowed disabled:border-gray-100 disabled:bg-gray-50 disabled:text-gray-400"
                 onClick={goBack}
               >
                 Cancel
               </button>
               <button
                 type="button"
-                class="flex-1 rounded-lg border border-red-500 bg-red-500 px-4 py-2 text-center text-sm font-medium text-white shadow-sm transition-all hover:border-red-700 hover:bg-red-700 focus:ring focus:ring-red-200 disabled:cursor-not-allowed disabled:border-red-300 disabled:bg-red-300"
+                className="flex-1 rounded-lg border border-red-500 bg-red-500 px-4 py-2 text-center text-sm font-medium text-white shadow-sm transition-all hover:border-red-700 hover:bg-red-700 focus:ring focus:ring-red-200 disabled:cursor-not-allowed disabled:border-red-300 disabled:bg-red-300"
                 onClick={deleteProduct}
               >
                 Delete
