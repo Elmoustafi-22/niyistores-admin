@@ -1,5 +1,3 @@
----
-
 # NIYISTORES🛒
 
 ### _A simple e-commerce project built with React, Next.js, Tailwind CSS, MongoDB, Node.js, and Stripe._
