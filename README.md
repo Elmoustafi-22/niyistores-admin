@@ -1,5 +1,3 @@
-Sure, I'd be happy to help you enhance your README file. Below is a revised version with improvements for clarity, consistency, and completeness. Additionally, I've added a section to acknowledge Mustopha as the solo developer and included placeholders for your Twitter and LinkedIn profiles.
-
 ---
 
 # NIYISTORES🛒
