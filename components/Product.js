@@ -40,16 +40,28 @@ function Product({
       axios.get("/api/categories").then(result => {
         setCategories(result.data)
       })
-    })
+    }, [])
 
-    async function createProduct(e){
+    async function createProduct(e) {
       e.preventDefault();
 
+
       if (isUploading) {
-        await Promise.all(uploadImagesQueue)
+        await Promise.all(uploadImagesQueue);
       }
-      
-      const data = {title, description, price, images, details, category, brand, gender, sizes, colors};
+
+      const data = {
+        title,
+        description,
+        price,
+        details,
+        images,
+        category,
+        brand,
+        gender,
+        sizes,
+        colors,
+      };
       if (_id) {
         await axios.put("/api/products", { ...data, _id });
         toast.success("Product updated!");
@@ -57,9 +69,7 @@ function Product({
         await axios.post("/api/products", data);
         toast.success("Product created!");
       }
-
-
-      setRedirect(true)
+      setRedirect(true);
     }
 
     if (redirect) {
@@ -139,6 +149,8 @@ function Product({
                 className="block w-full rounded-md border-gray-300 shadow-sm sm:text-sm focus:border-primary-400
                 focus:ring focus:ring-primary-200 focus:ring-opacity-50 disabled:cursor-not-allowed
               disabled:bg-gray-50 disabled:text-gray-500 border p-3"
+                value={category}
+                onChange={e => setCategory(e.target.value)}
               >
                 <option value="">No category selected</option>
                 {categories.length > 0 &&
@@ -312,7 +324,7 @@ function Product({
               <label htmlFor="gender">Gender</label>
               <input
                 className="w-full rounded-lg border border-gray-200 p-3 text-sm"
-                placeholder="brand name"
+                placeholder="gender"
                 id="gender"
                 type="text"
                 value={gender}
@@ -321,10 +333,10 @@ function Product({
             </div>
 
             <div>
-              <label htmlFor="sizes">Sizes</label>
+              <label htmlFor="sizes">Size</label>
               <input
                 className="w-full rounded-lg border border-gray-200 p-3 text-sm"
-                placeholder="brand name"
+                placeholder="size"
                 id="sizes"
                 type="text"
                 value={sizes}
