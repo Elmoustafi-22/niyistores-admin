@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import Spinner from "./Spinner";
 import { ReactSortable } from "react-sortablejs";
 import toast from "react-hot-toast";
+import Image from "next/image";
 
 function Product({
   _id,
@@ -229,7 +230,9 @@ function Product({
                 {Array.isArray(images) &&
                   images.map((link, index) => (
                     <div key={link} className="relative group">
-                      <img
+                      <Image
+                        height={50}
+                        width={50}
                         src={link}
                         alt="image"
                         className="object-cover h-32 w-44 rounded-md border p-2 cursor-pointer transition-transform transform-gpu group-hover:scale-105"

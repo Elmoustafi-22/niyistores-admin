@@ -2,6 +2,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { useSession, signOut } from "next-auth/react";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 function Header() {
     const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
@@ -16,7 +17,7 @@ function Header() {
 
     const active = "text-teal-600 transition hover:text-teal-500/75 p-3 rounded-md bg-gray-200"
     const inActive = "text-gray-500 transition hover:text-gray-500/75 p-3"
-
+    
     if (session) {
         return (
           <>
@@ -115,7 +116,9 @@ function Header() {
                       <div className="sm:flex sm:gap-4">
                         <div className="h-10 w-10">
                           <div className="h-10 w-10">
-                            <img
+                            <Image
+                              width={50}
+                              height={50}
                               className="h-full w-full rounded-full object-cover object-center border-2 border-teal-600"
                               src={session.user.image}
                               alt=""
