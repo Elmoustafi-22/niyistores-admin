@@ -151,26 +151,26 @@ function Products() {
                   ))}
                 </tbody>
               </table>
-              {totalPages > 1 && (
-                <div className="flex justify-center mt-4">
-                  {Array.from({ length: totalPages }, (_, i) => (
-                    <button
-                      key={i}
-                      onClick={() => changePage(i + 1)}
-                      className={`mx-2 px-3 py-2 rounded ${
-                        i + 1 === currentPage
-                          ? "bg-blue-300 text-slate-900"
-                          : "bg-gray-200 hover:bg-gray-300"
-                      }`}
-                    >
-                      {i + 1}
-                    </button>
-                  ))}
-                </div>
-              )}
             </div>
           )}
         </div>
+        {totalPages > 1 && (
+          <div className="flex justify-center mt-4 mb-3">
+            {Array.from({ length: totalPages }, (_, i) => (
+              <button
+                key={i}
+                onClick={() => changePage(i + 1)}
+                className={`mx-2 px-3 py-2 rounded ${
+                  i + 1 === currentPage
+                    ? "bg-blue-300 text-slate-900"
+                    : "bg-gray-200 hover:bg-gray-300"
+                }`}
+              >
+                {i + 1}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
     );
 }
