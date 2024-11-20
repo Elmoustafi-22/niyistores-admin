@@ -33,7 +33,7 @@ function Products() {
     }
 
     return (
-      <div className=" md:overflow-x-scroll max-sm:overflow-x-scroll">
+      <div className="">
         <header className="bg-white">
           <div className="mx-auto max-md:flex-col px-4 py-6 sm:px-6 sm:py-12 lg:px-8">
             <div
@@ -79,7 +79,10 @@ function Products() {
 
         <hr className="my-0 h-px border-0 bg-gray-300" />
 
-        <div className="mx-auto max-w-screen-xl px-4 py-6 sm:px-6 sm:py-12 lg:px-8">
+        <div
+          className="mx-auto max-w-screen-xl px-4 py-6 sm:px-6 sm:py-12 
+          lg:px-8 md:overflow-x-scroll max-sm:overflow-x-scroll"
+        >
           {loading ? (
             <p>Loading...</p>
           ) : products.length === 0 ? (
