@@ -65,7 +65,7 @@ function Categories() {
     <>
       <header>
         <div className="mx-auto px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
-          <div className="flex max-sm:flex-col sm:items-center sm:justify-between items-center">
+          <div className="flex flex-col lg:flex-row lg:justify-between md:flex-col md:items-center sm:flex-col items-center">
             <div className="text-center sm:text-left">
               <h1 className="text-3xl font-bold text-gray-900 sm:text-3xl">
                 All Categories
@@ -92,7 +92,7 @@ function Categories() {
 
             <form
               onSubmit={saveCategory}
-              className="mt-4 flex max-sm:flex-col gap-4 sm:mt-3 max-sm:px-4 sm:items-center"
+              className="mt-4 flex flex-col md:flex-col lg:flex-row sm:flex-col gap-4 sm:mt-3 max-sm:px-4 sm:items-center"
             >
               <div>
                 <div className="relative">

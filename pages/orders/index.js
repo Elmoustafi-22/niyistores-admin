@@ -12,7 +12,7 @@ function Orders() {
 
     return (
         <>
-            <div className="p-4">
+            <div className="p-4 sm:overflow-x-auto">
                 <h1 className="text-3xl font-bold md-4">Orders</h1>
                 {orders.length > 0 && 
                   orders.map((order, index) => (

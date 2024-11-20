@@ -21,7 +21,7 @@ function Header() {
     if (session) {
         return (
           <>
-            <header className="bg-white border-b sticky top-0 shadow">
+            <header className="bg-white border-b sticky top-0 shadow z-50">
               <div className="lg:px-8 sm:px-4">
                 <div className="flex h-16 items-center justify-between">
                   <div className="flex-1 md:flex md:items-center md:gap-12">
@@ -44,9 +44,9 @@ function Header() {
                     </Link>
                   </div>
 
-                  <div className="md:flex md:items-center md:gap-12">
+                  <div className="md:flex md:items-center md:gap-3">
                     <nav aria-label="Global" className="hidden md:block">
-                      <ul className="flex items-center gap-6 text-md">
+                      <ul className="flex items-center gap-1 text-[14px]">
                         <li>
                           <Link
                             className={
@@ -112,8 +112,8 @@ function Header() {
                       </ul>
                     </nav>
 
-                    <div className="flex items-center gap-4">
-                      <div className="sm:flex sm:gap-4">
+                    <div className="flex items-center gap-2">
+                      <div className="sm:flex md:gap-3">
                         <div className="h-10 w-10">
                           <div className="h-10 w-10">
                             <Image
@@ -127,7 +127,7 @@ function Header() {
                         </div>
                       </div>
 
-                      <div className="block md:hidden">
+                      <div className="md:hidden sm:block">
                         <button
                           className="rounded bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75"
                           onClick={toggleMobileNav}
@@ -166,8 +166,8 @@ function Header() {
                         </button>
                       </div>
                       {isMobileNavOpen && (
-                        <div className="md:hidden absolute top-16 right-0 bg-white border border-zinc-200 rounded shadow-lg p-6 text-lg">
-                          <ul className="flex flex-col items-start gap-4">
+                        <div className="md:hidden absolute top-16 right-0 bg-white border border-zinc-200 rounded shadow-lg p-2 text-[14px]">
+                          <ul className="flex flex-col items-start gap-3">
                             <li>
                               <Link
                                 onClick={toggleMobileNav}
@@ -213,7 +213,7 @@ function Header() {
                                 Settings
                               </Link>
                             </li>
-                            <li className={pathname === "/" ? active : inActive}>
+                            <li className={`${pathname === "/" ? active : inActive} border-t-2 w-full`}>
                               {session && (
                                 <button onClick={() => signOut()}>
                                   logout

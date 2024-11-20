@@ -67,7 +67,7 @@ function Home() {
         <main className={`min-h-screen p-4`}>
           <header>
             <div className="mx-auto px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
-              <div className="flex flex-col items-start gap-4 md:flex-row md:items-center md:justify-between">
+              <div className="flex flex-col items-center gap-4 md:flex-row md:items-center md:justify-between">
                 <div className="text-center sm:text-left">
                   <h1 className="text-3xl font-bold text-gray-900 sm:text-3xl">
                     Welcome Back,{" "}
@@ -129,7 +129,7 @@ function Home() {
               </div>
             </div>
           </header>
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 lg:gap-8">
+          <div className="grid gap-4 md:grid-cols-2 sm:grid-cols-1 lg:grid-cols-4 lg:gap-8">
             <div className="h-32 rounded-lg bg-gray-200 flex items-center justify-center">
               <article className="flex max-md:flex-col items-end justify-between rounded-lg gap-4">
                 <div>
@@ -156,7 +156,10 @@ function Home() {
                     />
                   </svg>
 
-                  <span className="text-xs font-medium"> {Math.round(Math.abs(profitPercentage))}% </span>
+                  <span className="text-xs font-medium">
+                    {" "}
+                    {Math.round(Math.abs(profitPercentage))}%{" "}
+                  </span>
                 </div>
               </article>
             </div>

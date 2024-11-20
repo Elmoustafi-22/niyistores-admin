@@ -4,12 +4,12 @@ export default function Footer() {
   return <>
     <footer className="bg-gray-50 border-t border-zinc-200">
         <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
-            <div className="sm:flex sm:items-center sm:justify-between">
+            <div className="flex flex-col sm:flex-col items-center justify-between md:flex-row ">
                 <div className="flex justify-center text-teal-600 sm:justify-start">
                     <span className="sr-only">Home</span>
                     <Link 
                       href="/"
-                      className=""
+                      className="flex flex-col items-center"
                     >
                       <svg
                         className="h-8 w-8 text-teal-600"
@@ -27,7 +27,7 @@ export default function Footer() {
                       Admin
                     </Link>
                 </div>
-                <p className="mt-4 text-center text-sm text-gray-900 lg:mt-0 lg:text-right mb-0">
+                <p className="mt-1 text-center text-sm text-gray-900 lg:mt-0 lg:text-right mb-0">
                     Copyright &copy; {new Date().getFullYear()}. All rights reserved
                 </p>
             </div>

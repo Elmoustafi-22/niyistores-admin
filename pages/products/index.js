@@ -33,11 +33,14 @@ function Products() {
     }
 
     return (
-      <>
+      <div className=" md:overflow-x-scroll max-sm:overflow-x-scroll">
         <header className="bg-white">
           <div className="mx-auto max-md:flex-col px-4 py-6 sm:px-6 sm:py-12 lg:px-8">
-            <div className="sm:flex sm:items-center sm:justify-between">
-              <div className="text-center sm:text-left">
+            <div
+              className="flex flex-col gap-6 items-center justify-center
+             md:flex-row md:justify-between"
+            >
+              <div className=" text-center sm:text-left">
                 <h1 className="text-2xl font-bold text-gray-900 sm:text-3xl">
                   <span className="text-teal-700 font-bold">All Products</span>
                 </h1>
@@ -165,7 +168,7 @@ function Products() {
             </div>
           )}
         </div>
-      </>
+      </div>
     );
 }
 
